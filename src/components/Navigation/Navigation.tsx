@@ -1,12 +1,16 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './navigation.module.css';
 
 export default function Navigation() {
+  const [show, setShow] = useState(false);
+
   return (
     <nav className={styles.main__nav}>
       <div className={styles.nav__logo}>
-        {/*TODO: img –> Image*/}
         <Image
           width={250}
           height={170}
@@ -16,15 +20,15 @@ export default function Navigation() {
           loading="eager"
         />
       </div>
-      <div className={styles.nav__burger}>
+      <div className={styles.nav__burger} onClick={() => setShow(!show)}>
         <span className={styles.burger__line}></span>
         <span className={styles.burger__line}></span>
         <span className={styles.burger__line}></span>
       </div>
+      {show && 
       <div className={styles.nav__menu}>
         <ul className={styles.menu__list}>
           <li className={styles.menu__item}>
-            {/*TODO: a -> Link*/}
             <Link href="#" className={styles.menu__link}>
               Главное
             </Link>
@@ -41,6 +45,7 @@ export default function Navigation() {
           </li>
         </ul>
       </div>
+}
     </nav>
   );
 }
