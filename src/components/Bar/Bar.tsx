@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import styles from './bar.module.css';
 
 export default function Bar() {
@@ -15,7 +15,7 @@ export default function Bar() {
                   <use xlinkHref="/img/icon/sprite.svg#icon-prev"></use>
                 </svg>
               </div>
-              <div className={classnames(styles.player__btnPlay, styles.btn)}>
+              <div className={classNames(styles.player__btnPlay, styles.btn)}>
                 <svg className={styles.player__btnPlaySvg}>
                   <use xlinkHref="/img/icon/sprite.svg#icon-play"></use>
                 </svg>
@@ -26,14 +26,14 @@ export default function Bar() {
                 </svg>
               </div>
               <div
-                className={classnames(styles.player__btnRepeat, styles.btnIcon)}
+                className={classNames(styles.player__btnRepeat, styles.btnIcon)}
               >
                 <svg className={styles.player__btnRepeatSvg}>
                   <use xlinkHref="/img/icon/sprite.svg#icon-repeat"></use>
                 </svg>
               </div>
               <div
-                className={classnames(
+                className={classNames(
                   styles.player__btnShuffle,
                   styles.btnIcon,
                 )}
@@ -65,7 +65,7 @@ export default function Bar() {
 
               <div className={styles.trackPlay__dislike}>
                 <div
-                  className={classnames(
+                  className={classNames(
                     styles.player__btnShuffle,
                     styles.btnIcon,
                   )}
@@ -75,7 +75,7 @@ export default function Bar() {
                   </svg>
                 </div>
                 <div
-                  className={classnames(
+                  className={classNames(
                     styles.trackPlay__dislike,
                     styles.btnIcon,
                   )}
@@ -94,9 +94,9 @@ export default function Bar() {
                   <use xlinkHref="/img/icon/sprite.svg#icon-volume"></use>
                 </svg>
               </div>
-              <div className={classnames(styles.volume__progress, styles.btn)}>
+              <div className={classNames(styles.volume__progress, styles.btn)}>
                 <input
-                  className={classnames(
+                  className={classNames(
                     styles.volume__progressLine,
                     styles.btn,
                   )}

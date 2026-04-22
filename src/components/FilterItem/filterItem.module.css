@@ -1,0 +1,58 @@
+.filter__button {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  border: 1px solid #ffffff;
+  border-radius: 60px;
+  padding: 6px 20px;
+  margin-right: 10px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.filter__button:not(:last-child) {
+  margin-right: 10px;
+}
+
+.filter__window {
+  position: absolute;
+  background-color: #313131;
+  border-radius: 13px;
+  margin-top: 10px;
+  max-height: 305px;
+  max-width: 248px;
+}
+
+.filter__list {
+  list-style-type: none;
+  margin: 34px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  font-size: 20px;
+  max-height: 237px;
+  max-width: 180px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.filter__list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.filter__list::-webkit-scrollbar-track {
+  background-color: rgba(75, 73, 73, 1);
+  border-radius: 10px;
+}
+
+.filter__list::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 10px;
+}
+
+.active {
+  color: #B672FF;
+  border-color: #B672FF;
+}
