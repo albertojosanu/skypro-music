@@ -12,8 +12,5 @@ export type TrackType = {
 };
 
 export type TrackProp = {
-  name: string;
-  author: string;
-  album: string;
-  duration_in_seconds: number;
+  track: TrackType
 };
