@@ -105,6 +105,11 @@
   color: #696969;
 }
 
+.track__time {
+  width: 75px;
+  text-align: end;
+}
+
 .track__timeSvg {
   width: 14px;
   height: 12px;

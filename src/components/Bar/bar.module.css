@@ -3,7 +3,6 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background: rgba(28, 28, 28, 0.5);
 }
 
 .bar__content {
@@ -95,6 +94,8 @@
 .player__btnPrevSvg {
   width: 15px;
   height: 14px;
+  fill: inherit;
+  stroke: #d9d9d9;
 }
 
 .player__btnPlay {
@@ -109,7 +110,6 @@
 
 .player__btnNext {
   margin-right: 28px;
-  fill: #a53939;
 }
 
 .player__btnNextSvg {
@@ -242,7 +242,7 @@
 
 .trackPlay__like,
 .trackPlay__dislike {
-  padding: 5px;
+  padding: 20px;
 }
 
 .trackPlay__likeSvg {
@@ -347,7 +347,9 @@
   cursor: pointer;
 }
 
-.btn-text {
+.btnText {
+  text-align: end;
+  color: #ffffff;
   &:hover {
     border-color: #d9b6ff;
     color: #d9b6ff;
@@ -358,4 +360,9 @@
     color: #ad61ff;
     cursor: pointer;
   }
+}
+
+.active svg {
+  fill: transparent;
+  stroke: #ffffff;
 }

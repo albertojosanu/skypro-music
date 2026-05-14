@@ -6,20 +6,42 @@ import styles from './track.module.css';
 import { TrackProp } from '@/sharedTypes/sharedTypes';
 import { formatTime } from '@/utils/helpers';
 import { useAppDispatch, useAppSelector } from '@/store/store';
-import { setCurrentTrack, setIsPlay } from '@/store/features/trackSlice';
+import {
+  setCurrentTrack,
+  setCurrentPlaylist,
+  setIsPlay,
+} from '@/store/features/trackSlice';
 
-export default function Track({ track }: TrackProp) {
+export default function Track({ track, playlist }: TrackProp) {
   const dispatch = useAppDispatch();
   const isPlay = useAppSelector((state) => state.tracks.isPlay);
   const currentTrack = useAppSelector((state) => state.tracks.currentTrack);
 
   return (
-    <div className={styles.playlist__item} onClick={() => {dispatch(setCurrentTrack(track)); dispatch(setIsPlay(false))}}>
+    <div
+      className={styles.playlist__item}
+      onClick={() => {
+        dispatch(setCurrentTrack(track));
+        dispatch(setCurrentPlaylist(playlist));
+        dispatch(setIsPlay(false));
+      }}
+    >
       <div className={styles.playlist__track}>
         <div className={styles.track__title}>
           <div className={styles.track__titleImage}>
-            <svg className={classNames(styles.track__titleSvg, {[styles.track__active]: isPlay && currentTrack?._id ===  track._id})}>
-              <use xlinkHref={currentTrack?._id ===  track._id ? "/img/icon/sprite.svg#icon-dot" : "/img/icon/sprite.svg#icon-note"}></use>
+            <svg
+              className={classNames(styles.track__titleSvg, {
+                [styles.track__active]:
+                  isPlay && currentTrack?._id === track._id,
+              })}
+            >
+              <use
+                xlinkHref={
+                  currentTrack?._id === track._id
+                    ? '/img/icon/sprite.svg#icon-dot'
+                    : '/img/icon/sprite.svg#icon-note'
+                }
+              ></use>
             </svg>
           </div>
           <div className={styles.track__titleText}>

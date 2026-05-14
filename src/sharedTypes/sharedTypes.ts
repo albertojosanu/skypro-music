@@ -12,5 +12,6 @@ export type TrackType = {
 };
 
 export type TrackProp = {
-  track: TrackType
+  track: TrackType;
+  playlist: TrackType[];
 };
