@@ -28,3 +28,12 @@ export function getUniqueValuesByKey(
 
   return Array.from(uniqueValues);
 }
+
+export const getTimePanel = (
+  currentTime: number,
+  totalTime: number | undefined,
+) => {
+  if (totalTime) {
+    return `${formatTime(currentTime)} / ${formatTime(totalTime)}`;
+  }
+};
