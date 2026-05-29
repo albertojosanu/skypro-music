@@ -7,7 +7,7 @@
 
 .container {
   max-width: 1920px;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0 auto;
   position: relative;
   background-color: #181818;
@@ -25,4 +25,12 @@
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 24px;
+  color: white;
 }
