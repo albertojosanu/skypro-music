@@ -15,7 +15,9 @@ export default function Signin() {
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const onSubmit = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
     e.preventDefault();
     setErrorMessage('');
 
@@ -25,22 +27,24 @@ export default function Signin() {
 
     setIsLoading(true);
 
-    authUser({ email, password })
-      .then((res) => {
-        router.push('/music/main');
-      })
-      .catch((error) => {
-        if (error instanceof AxiosError) {
-          if (error.response) {
-            setErrorMessage(error.response.data.message);
-          } else if (error.request) {
-            setErrorMessage('Отсутствует доступ к сети');
-          } else {
-            setErrorMessage('Неизвестная ошибка');
-          }
+    try {
+      const tokens = await authUser({ email, password });
+      localStorage.setItem('accessToken', tokens.access);
+      localStorage.setItem('refreshToken', tokens.refresh);
+      router.push('/music/main');
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        if (error.response) {
+          setErrorMessage(error.response.data.message);
+        } else if (error.request) {
+          setErrorMessage('Отсутствует доступ к сети');
+        } else {
+          setErrorMessage('Неизвестная ошибка');
         }
-      })
-      .finally(() => setIsLoading(false));
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

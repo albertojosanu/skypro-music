@@ -18,6 +18,11 @@ type userReturn = {
   _id: number;
 };
 
+type authUserReturn = {
+  access: string;
+  refresh: string;
+};
+
 export const registerUser = (data: registerUserProps): Promise<userReturn> => {
   return axios
     .post(BASE_URL + '/user/signup', data, {
@@ -30,14 +35,14 @@ export const registerUser = (data: registerUserProps): Promise<userReturn> => {
     });
 };
 
-export const authUser = (data: authUserProps): Promise<userReturn> => {
+export const authUser = (data: authUserProps): Promise<authUserReturn> => {
   return axios
-    .post(BASE_URL + '/user/login', data, {
+    .post(BASE_URL + '/user/token', data, {
       headers: {
         'content-type': 'application/json',
       },
     })
     .then((res) => {
-      return res.data.data;
+      return res.data.data ?? res.data;
     });
 };
