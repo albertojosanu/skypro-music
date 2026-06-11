@@ -1,25 +1,15 @@
 import classNames from 'classnames';
 import styles from './filterItem.module.css';
-// import { data } from '@/data';
-import { TrackType } from '@/sharedTypes/sharedTypes';
+import type { TrackType } from '@/sharedTypes/sharedTypes';
 import { getUniqueValuesByKey } from '@/utils/helpers';
-
-import { useState, useEffect } from 'react';
-import { useAppSelector } from '@/store/store';
 
 export default function FilterItem(props: {
   children: string;
   type: keyof TrackType;
+  tracks: TrackType[];
   activeFilter: [string, React.Dispatch<React.SetStateAction<string>>];
   visible: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
 }) {
-  const selection = useAppSelector((state) => state.tracks.selection);
-  const playlist = selection.name
-    ? useAppSelector((state) => state.tracks.playlist).filter((element) =>
-        selection.items.includes(element._id),
-      )
-    : useAppSelector((state) => state.tracks.playlist);
-
   return (
     <div>
       <div
@@ -44,7 +34,7 @@ export default function FilterItem(props: {
               ? ['По умолчанию', 'Сначала новые', 'Сначала старые'].map(
                   (element, index) => <li key={index}>{element}</li>,
                 )
-              : getUniqueValuesByKey(playlist, props.type).map(
+              : getUniqueValuesByKey(props.tracks, props.type).map(
                   (element, index) => <li key={index}>{element}</li>,
                 )}
           </ul>
