@@ -15,3 +15,11 @@ export type TrackProp = {
   track: TrackType;
   playlist: TrackType[];
 };
+
+export type SelectionType = {
+  _id: number;
+  name: string;
+  items: number[];
+  owner: string;
+  __v: number;
+};

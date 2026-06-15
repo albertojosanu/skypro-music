@@ -1,12 +1,12 @@
 import classNames from 'classnames';
 import styles from './filterItem.module.css';
-import { data } from '@/data';
-import { TrackType } from '@/sharedTypes/sharedTypes';
+import type { TrackType } from '@/sharedTypes/sharedTypes';
 import { getUniqueValuesByKey } from '@/utils/helpers';
 
 export default function FilterItem(props: {
   children: string;
   type: keyof TrackType;
+  tracks: TrackType[];
   activeFilter: [string, React.Dispatch<React.SetStateAction<string>>];
   visible: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
 }) {
@@ -34,9 +34,9 @@ export default function FilterItem(props: {
               ? ['По умолчанию', 'Сначала новые', 'Сначала старые'].map(
                   (element, index) => <li key={index}>{element}</li>,
                 )
-              : getUniqueValuesByKey(data, props.type).map((element, index) => (
-                  <li key={index}>{element}</li>
-                ))}
+              : getUniqueValuesByKey(props.tracks, props.type).map(
+                  (element, index) => <li key={index}>{element}</li>,
+                )}
           </ul>
         </div>
       )}

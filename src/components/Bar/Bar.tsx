@@ -40,10 +40,6 @@ export default function Bar() {
     }
   };
 
-  // useEffect(() => {
-  //   playTrack();
-  // }, [currentTrack]);
-
   useEffect(() => {
     setIsLoadedTrack(false);
   }, [currentTrack]);
@@ -134,10 +130,7 @@ export default function Bar() {
                 onClick={() => setIsLoop(!isLoop)}
               >
                 <svg className={styles.player__btnRepeatSvg}>
-                  <use
-                    xlinkHref="/img/icon/sprite.svg#icon-repeat"
-                    // fill={isLoop ? "#D9D9D9" : "#696969"}
-                  ></use>
+                  <use xlinkHref="/img/icon/sprite.svg#icon-repeat"></use>
                 </svg>
               </div>
               <div

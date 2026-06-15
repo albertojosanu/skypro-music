@@ -1,16 +1,26 @@
+'use client';
+
 import classNames from 'classnames';
 import styles from './centerblock.module.css';
 import Search from '@/components/Search/Search';
 import Filter from '@/components/Filter/Filter';
 import Track from '@/components/Track/Track';
-import { data } from '@/data';
+import type { TrackType } from '@/sharedTypes/sharedTypes';
 
-export default function Centerblock() {
+type CenterBlockProps = {
+  tracks: TrackType[];
+  title?: string;
+};
+
+export default function Centerblock({
+  tracks,
+  title = 'Треки',
+}: CenterBlockProps) {
   return (
     <div className={styles.centerblock}>
       <Search />
-      <h2 className={styles.centerblock__h2}>Треки</h2>
-      <Filter />
+      <h2 className={styles.centerblock__h2}>{title}</h2>
+      <Filter tracks={tracks} />
       <div className={styles.centerblock__content}>
         <div className={styles.content__title}>
           <div className={classNames(styles.playlistTitle__col, styles.col01)}>
@@ -28,9 +38,10 @@ export default function Centerblock() {
             </svg>
           </div>
         </div>
+
         <div className={styles.content__playlist}>
-          {data.map((track) => (
-            <Track key={track._id} track={track} playlist={data} />
+          {tracks.map((track) => (
+            <Track key={track._id} track={track} playlist={tracks} />
           ))}
         </div>
       </div>
