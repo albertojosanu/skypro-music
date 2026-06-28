@@ -1,13 +1,29 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './sidebar.module.css';
+import { useAppDispatch, useAppSelector } from '@/store/store';
+import { clearUser } from '@/store/features/authSlice';
+import { setFavoriteTracks } from '@/store/features/trackSlice';
+import { useRouter } from 'next/navigation';
 
 export default function Sidebar() {
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+  const username = useAppSelector((state) => state.auth.username);
+  const logout = async () => {
+    dispatch(clearUser());
+    dispatch(setFavoriteTracks([]));
+    router.push('/auth/signin');
+  };
   return (
     <div className={styles.main__sidebar}>
       <div className={styles.sidebar__personal}>
-        <p className={styles.sidebar__personalName}>Sergey.Ivanov</p>
-        <div className={styles.sidebar__icon}>
+        <p className={styles.sidebar__personalName}>
+          {username || 'Инкогнито'}
+        </p>
+        <div className={styles.sidebar__icon} onClick={logout}>
           <svg>
             <use xlinkHref="/img/icon/sprite.svg#logout"></use>
           </svg>

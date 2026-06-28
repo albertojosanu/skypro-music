@@ -1,8 +1,9 @@
 .bar {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
+  background-color: #181818;
 }
 
 .bar__content {
@@ -248,8 +249,16 @@
 .trackPlay__likeSvg {
   width: 14px;
   height: 12px;
+}
+
+.trackPlay__likeSvg__disabled {
   fill: transparent;
   stroke: #696969;
+}
+
+.trackPlay__likeSvg__enabled {
+  fill: #b672ff;
+  stroke: #b672ff;
 }
 
 .trackPlay__dislike {
@@ -329,20 +338,17 @@
 }
 
 .btnIcon:hover svg {
-  fill: transparent;
   stroke: #acacac;
   cursor: pointer;
 }
 
 .btnIcon:active svg {
-  fill: transparent;
   stroke: #ffffff;
   cursor: pointer;
 }
 
 .btnIcon:active .trackPlay__likeSvg,
 .btnIcon:active .trackPlay__dislikeSvg {
-  fill: #696969;
   stroke: #ffffff;
   cursor: pointer;
 }
