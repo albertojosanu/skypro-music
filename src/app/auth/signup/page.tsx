@@ -43,7 +43,6 @@ export default function SignUp() {
           } else {
             setErrorMessage('Неизвестная ошибка');
           }
-          console.log(error.config);
         }
       })
       .finally(() => setIsLoading(false));

@@ -107,15 +107,31 @@
 
 .track__time {
   width: 75px;
-  text-align: end;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .track__timeSvg {
   width: 14px;
   height: 12px;
-  margin-right: 17px;
+  margin-left: 15px;
+}
+
+.track__timeSvg__disabled {
   fill: transparent;
   stroke: #696969;
+}
+
+.track__timeSvg__enabled {
+  fill: #b672ff;
+  stroke: #b672ff;
+}
+
+.track__timeSvg:hover,
+.track__timeSvg:active {
+  stroke: #ffffff;
+  cursor: pointer;
 }
 
 .track__timeText {

@@ -7,7 +7,7 @@ import { setCurrentTrack, setIsPlay } from '@/store/features/trackSlice';
 
 export default function MainPage() {
   const dispatch = useAppDispatch();
-  const { fetchError, fetchIsLoading, allTracks } = useAppSelector(
+  const { fetchError, fetchIsLoading, favoriteTracks } = useAppSelector(
     (state) => state.tracks,
   );
 
@@ -20,7 +20,7 @@ export default function MainPage() {
 
   return (
     <Centerblock
-      tracks={allTracks}
+      tracks={favoriteTracks}
       isLoading={fetchIsLoading}
       errorRes={fetchError}
       title={'Треки'}

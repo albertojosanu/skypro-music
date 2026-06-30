@@ -5,10 +5,17 @@ import styles from './signin.module.css';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { authUser } from '@/services/auth/authApi';
+import { authUser, getTokens } from '@/services/auth/authApi';
 import { AxiosError } from 'axios';
+import { useAppDispatch } from '@/store/store';
+import {
+  setUsername,
+  setAccessToken,
+  setRefreshToken,
+} from '@/store/features/authSlice';
 
 export default function Signin() {
+  const dispatch = useAppDispatch();
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -28,10 +35,18 @@ export default function Signin() {
     setIsLoading(true);
 
     try {
-      const tokens = await authUser({ email, password });
-      localStorage.setItem('accessToken', tokens.access);
-      localStorage.setItem('refreshToken', tokens.refresh);
-      router.push('/music/main');
+      await authUser({ email, password })
+        .then(() => {
+          dispatch(setUsername(email));
+          return getTokens({ email, password });
+        })
+        .then((res) => {
+          dispatch(setAccessToken(res.access));
+          dispatch(setRefreshToken(res.refresh));
+        })
+        .then((res) => {
+          router.push('/music/main');
+        });
     } catch (error) {
       if (error instanceof AxiosError) {
         if (error.response) {
